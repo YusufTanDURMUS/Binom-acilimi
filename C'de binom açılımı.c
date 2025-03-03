@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <math.h>
-    //Binom fonksiyonu: (x+y)^n= k=0'dan n'e kadar olan toplam  n!/(k!(n-k)!)*x'(n-k)*y^k deðeri þeklinde formülle tanýmlayalým
+    //Binom fonksiyonu: (x+y)^n= k=0'dan n'e kadar olan toplam  n!/(k!(n-k)!)*x'(n-k)*y^k degeri seklinde formulle tanÄ±mlayalÄ±m
+    //Bizden istenen ornek x^3*y^0+3x^2*y+3x*y^2+y^3 seklinde olmasi
 
-// En baþta faktöriyel hesaplama fonksiyonu ile baþlayalým
+// En basta faktoriyel hesaplama fonksiyonu ile baslayalim
 int faktoryel(int n) {
 	int i;
     int result = 1;
@@ -12,12 +13,12 @@ int faktoryel(int n) {
     return result;
 }
 
-// Þimdi de binom katsayýsýný hesaplayan fonksiyonu yazalým
+// Simdi de binom katsayisini hesaplayan fonksiyonu yazalim
     BinomKatsayisi(int n, int k) {
     return faktoryel(n) / (faktoryel(k) * faktoryel(n - k));
 }
 
-// Sýra geldi binom açýlýmýný yazdýran fonksiyona
+// Sira geldi binom acilimini yazdiran fonksiyona
 void BinomAcilimi(int n, int x, int y) {
     int k,i;
 	for (k = 0; k <= n; k++) {
@@ -26,17 +27,17 @@ void BinomAcilimi(int n, int x, int y) {
         int yDegeri = 1;
 
         
-        for (i = 0; i < (n - k); i++) {
+        for (i = 0; i < k; i++) {
             xDegeri *= x;
         }
         
         
-        for (i = 0; i < k; i++) {
+        for (i = 0; i < ( k - n ); i++) {
             yDegeri *= y;
         }
         
         if (k > 0) printf(" + ");
-        printf("%d%c^%d * %d^%d", katsayi, x, (n - k), y, k);
+        printf("%dx^%d * y^%d", katsayi, (n - k), k);
     }
     printf("\n");
 }
@@ -45,8 +46,8 @@ int main() {
     int n, x, y;
 
     
-    printf("Sirasi ile n, x ve y degerlerini girin : "); //Þimdi kullanýcýdan binom fonksiyonunun deðerlerini alalým
-    scanf("%d %d %d", &n, &x, &y);
+    printf("Acilimini ogrenmek istediginiz us degerini (n) girin : "); //Simdi kullanicidan binom fonksiyonunun degerlerini alalÄ±m
+    scanf("%d", &n );
 
     BinomAcilimi(n, x, y);
 
